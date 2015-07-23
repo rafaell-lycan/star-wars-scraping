@@ -1,6 +1,5 @@
 var cheerio = require('cheerio');
 var Promise = require('bluebird');
-var debug = require('debug')('stars');
 var request = Promise.promisify(require('request'));
 var crawler = {
   getMovieList : getMovieList,
@@ -58,7 +57,6 @@ function getMovieList () {
 }
 
 function getMovieData (slug) {
-  debug("-> Slug", slug);
   return request(BASE_URL + slug)
     .then(function (result) {
       var html = result[1];

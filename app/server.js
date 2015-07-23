@@ -1,8 +1,10 @@
 var express = require('express');
+var cors    = require('cors');
 var app     = express();
 var routes  = require('./routes');
 var port    = process.env.PORT || 3000;
 
+app.use(cors());
 app.use('/', routes);
 app.use(function(err, req, res, next) {
   res.status(400).json({ error: err });
